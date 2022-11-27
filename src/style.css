@@ -1,0 +1,37 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --purple: #130a36;
+  --white: #ffffff;
+  --l-purple: rgb(155, 75, 235);
+  --l-purple-o-8: rgba(155, 75, 235, 0.8);
+  --l-purple-o-6: rgba(155, 75, 235, 0.6);
+  --l-purple-o-2: rgba(155, 75, 235, 0.3);
+  --l-purple-2: #c7b9ff;
+  --l-purple-2-o-2: rgba(203, 190, 255, 0.2);
+  --pur-white: rgb(248, 242, 255);
+  --pur-white-o-8: rgb(248, 242, 255, 0.8);
+  --g-white: #f1f2f7;
+  --d-grey: #43464a;
+  --d-grey-o-4: rgba(67, 70, 74, 0.4);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+}
