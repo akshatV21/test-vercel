@@ -6,3 +6,4 @@ import { autoAnimatePlugin } from "@formkit/auto-animate/vue"
 import { router } from "./router"
 
 createApp(App).use(router).use(VWave).use(autoAnimatePlugin).mount("#app")
+export const API_URL = "http://localhost:8080"

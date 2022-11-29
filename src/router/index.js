@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Home from "../views/Home.vue"
+import Groups from "../views/Groups.vue"
+import Friends from "../views/Friends.vue"
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -10,8 +12,28 @@ export const router = createRouter({
       component: Home,
       children: [
         {
-          path: "/:link",
-          name: "home",
+          path: "/Groups",
+          name: "groups",
+          component: Groups,
+        },
+        {
+          path: "/Friends",
+          name: "friends",
+          component: Friends,
+        },
+        {
+          path: "/Privates",
+          name: "privates",
+          component: Home,
+        },
+        {
+          path: "/Community",
+          name: "community",
+          component: Home,
+        },
+        {
+          path: "/Doubts",
+          name: "doubts",
           component: Home,
         },
       ],

@@ -11,17 +11,22 @@
 
   --purple: #130a36;
   --white: #ffffff;
+  --white-2: #f5f5f5;
   --l-purple: rgb(155, 75, 235);
   --l-purple-o-8: rgba(155, 75, 235, 0.8);
   --l-purple-o-6: rgba(155, 75, 235, 0.6);
   --l-purple-o-2: rgba(155, 75, 235, 0.3);
   --l-purple-2: #c7b9ff;
+  --l-purple-2-o-6: rgba(203, 190, 255, 0.6);
+  --l-purple-2-o-4: rgba(203, 190, 255, 0.4);
   --l-purple-2-o-2: rgba(203, 190, 255, 0.2);
   --pur-white: rgb(248, 242, 255);
   --pur-white-o-8: rgb(248, 242, 255, 0.8);
   --g-white: #f1f2f7;
   --d-grey: #43464a;
+  --d-grey-o-8: rgba(67, 70, 74, 0.8);
   --d-grey-o-4: rgba(67, 70, 74, 0.4);
+  --d-grey-o-2: rgba(67, 70, 74, 0.2);
 }
 
 * {

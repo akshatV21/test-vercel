@@ -1,21 +1,46 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue"
+import axios from "axios"
+import { API_URL } from "../main"
+
+const name = ref("")
+const email = ref("")
+const password = ref("")
+
+async function register() {
+  const payload = { name: name.value, email: email.value, password: password.value }
+  const response = await axios.post(`${API_URL}/auth/register`, payload, {
+    headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+  })
+
+  const data = await response.data
+
+  if (!data.success) {
+    alert(data.message)
+    console.log(data.message)
+    return
+  }
+
+  console.log(data)
+}
+</script>
 
 <template>
   <div class="main-auth-bg">
     <div class="main-block">
       <span>
         <p>Name</p>
-        <input type="text" placeholder="Enter your name..." />
+        <input type="text" placeholder="Enter your name..." v-model="name" />
       </span>
       <span>
         <p>Email</p>
-        <input type="text" placeholder="Enter your email..." />
+        <input type="text" placeholder="Enter your email..." v-model="email" />
       </span>
       <span>
         <p>Password</p>
-        <input type="text" placeholder="Enter your password..." />
+        <input type="text" placeholder="Enter your password..." v-model="password" />
       </span>
-      <button v-wave>REGISTER</button>
+      <button v-wave @click="register">REGISTER</button>
     </div>
   </div>
 </template>

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router"
 
 const route = useRoute()
 const router = useRouter()
+const emitter = defineEmits(["sidebar-event"])
 
 const links = ref([
   {
@@ -28,12 +29,25 @@ const links = ref([
     a: "<h1>hello world</h1>",
   },
 ])
-const currentLink = ref(route.query.link ?? "Groups")
+const currentLink = ref(getCurrentLink())
 const isSidebarClosed = ref(false)
+
+function getCurrentLink() {
+  const path = route.fullPath
+  const splittedOne = path.split("/").join("?")
+  const splitted = splittedOne.split("?")
+  console.log(splitted)
+  return splitted[1]
+}
 
 const changeLink = link => {
   router.push(`/${link.name}`)
   currentLink.value = link.name
+}
+
+const changeSidebarWidth = () => {
+  isSidebarClosed.value = !isSidebarClosed.value
+  emitter("sidebar-event", isSidebarClosed.value)
 }
 </script>
 
@@ -52,10 +66,11 @@ const changeLink = link => {
           <div class="link-icon" v-html="link.svg"></div>
           <p v-if="!isSidebarClosed">{{ link.name }}</p>
         </div>
+        <div class="side-tile" v-if="!isSidebarClosed"></div>
       </div>
     </div>
     <div class="bottom-block">
-      <div class="collapse-block" @click="isSidebarClosed = !isSidebarClosed">
+      <div class="collapse-block" @click="changeSidebarWidth">
         <div class="collapse-icon">
           <svg width="20" height="20" viewBox="0 0 32 32">
             <path fill="currentColor" d="m6 22l1.414-1.414L3.828 17H12v-2H3.828l3.586-3.586L6 10l-6 6l6 6z" />
@@ -92,6 +107,7 @@ const changeLink = link => {
 }
 
 .main-link {
+  position: relative;
   color: var(--pur-white-o-8);
   padding: 12px 22px;
   cursor: pointer;
@@ -108,6 +124,24 @@ const changeLink = link => {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.side-tile {
+  position: absolute;
+  width: 4px;
+  height: 30px;
+  background-color: var(--l-purple-2-o-6);
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.main-link.selected .side-tile {
+  opacity: 1;
 }
 
 .link-icon,
